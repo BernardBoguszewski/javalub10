@@ -15,7 +15,11 @@ public class Greetings {
             } else if (names.length == 3) {
                 return names[0] + ", " + names[1] + " i " + names[2] + " witajcie!";
             }
+        } else if (name.matches(".*\\d.*")) {
+            return ("Z liczbami się nie witam.");
         }
         return "Witaj " + name;
     }
 }
+
+

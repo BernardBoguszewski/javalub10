@@ -69,4 +69,14 @@ public class GreetingsTest {
 
         assertEquals("Adam i Iza, witajcie! WITAJ ROBERT!", result);
     }
+    
+    @Test
+    public void testShouldFindNumbersInNameVariable (){
+        Greetings greetings = new Greetings();
+        String name = "Adam1";
+
+        String result = greetings.greet(name);
+
+        assertEquals("Z liczbami się nie witam.", result);
+    }
 }
