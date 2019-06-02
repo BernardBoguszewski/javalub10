@@ -16,7 +16,7 @@ public class BracketsTest {
         //when
         Boolean result = Brackets.check(bracketsString);
         //then
-        Assert.assertFalse(result);
+        assertFalse(result);
 
     }
 
@@ -29,7 +29,7 @@ public class BracketsTest {
         //when
         Boolean result = Brackets.check(bracketsString);
         //then
-        Assert.assertTrue(result);
+        assertTrue(result);
 
     }
 
@@ -42,9 +42,10 @@ public class BracketsTest {
         //when
         Boolean result = Brackets.check(bracketsString);
         //then
-        Assert.assertFalse(result);
+        assertFalse(result);
 
     }
+
     @Test
     public void shouldReturnTrueIfFirstHalfOfStringIsNotSymmetricToSecondHalf() {
 
@@ -54,7 +55,7 @@ public class BracketsTest {
         //when
         Boolean result = Brackets.check(bracketsString);
         //then
-        Assert.assertFalse(result);
+        assertFalse(result);
 
     }
 
