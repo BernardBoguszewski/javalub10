@@ -17,7 +17,6 @@ public class Brackets {
         }
         return false;
 
-
     }
 
     private static String flipString(String secondHalf) {
