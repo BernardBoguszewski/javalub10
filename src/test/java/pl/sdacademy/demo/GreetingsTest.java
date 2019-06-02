@@ -1,43 +1,52 @@
 package pl.sdacademy.demo;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * @author Mariusz Kowalczuk
  */
 public class GreetingsTest {
 
+    Greetings greetings;
+
+    @Before
+    public void init() {
+        greetings = new Greetings();
+    }
+
     @Test
-    public void greet() {
+    public void shouldReturnGreetinsForGivenNAme() {
         //given
-        Greetings greetings = new Greetings();
+
         String name = "Ala";
 
         //when
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("Witaj Ala", result);
+        assertEquals("Witaj Ala", result);
     }
 
 
     @Test
-    public void greetNullSafe() {
+    public void shouldReturnStringAfterNullGIvenAsName() {
 
         //given
-        Greetings greetings = new Greetings();
         String name = null;
 
         // when
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("Witaj, mój przyjacielu", result);
+        assertEquals("Witaj, mój przyjacielu", result);
     }
 
     @Test
-    public void upperCaseNameGiven() {
+    public void shouldReturnUpperCaseGreetingsWhenApperCaseNameGiven() {
 
         //given
         Greetings greetings = new Greetings();
@@ -47,59 +56,68 @@ public class GreetingsTest {
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("WITAJ ADAM!", result);
+        assertEquals("WITAJ ADAM!", result);
     }
 
     @Test
-    public void twoNamesGivenWithCommaSeparator() {
+    public void shouldReturnGreetingsWithTwoNamesWhenTwoNamesGiven() {
         //given
-        Greetings greetings = new Greetings();
         String name = "Adam,Iza";
 
         // when
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("Adam i Iza, witajcie!", result);
+        assertEquals("Adam i Iza, witajcie!", result);
     }
 
     @Test
-    public void threeNamesGivenWithCommaSeparator() {
+    public void shuldReturnSpecialStringForThreeNamesGiven() {
         //given
-        Greetings greetings = new Greetings();
         String name = "Adam,Iza,Robert";
 
         // when
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("Adam, Iza i Robert, witajcie!", result);
+        assertEquals("Adam, Iza i Robert, witajcie!", result);
     }
 
     @Test
-    public void threeNamesGivenWithCommaSeparatorLastNameUppercase() {
+    public void shuldReturnSpecialStringWhenAnyNameWasGIvenUppercase() {
         //given
-        Greetings greetings = new Greetings();
         String name = "Adam, Iza, ROBERT";
 
         // when
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("Adam i Iza, witajcie! WITAJ ROBERT!", result);
+        assertEquals("Adam i Iza, witajcie! WITAJ ROBERT!", result);
     }
 
     @Test
-    public void NameWithDigitsGiven() {
+    public void shouldReturnSpecialStringWhenGivenNameIncludesDigits() {
         //given
-        Greetings greetings = new Greetings();
         String name = "3";
 
         // when
         String result = greetings.greet(name);
 
         //then
-        Assert.assertEquals("Z liczbami się nie witam.", result);
+        assertEquals("Z liczbami się nie witam.", result);
     }
 
+
+    @Test
+    public void shouldReturnTrueWhenAllUppercaseCettersInGivenString() {
+        //given
+        String name = "ABC";
+
+        // when
+
+        Boolean result = greetings.isNameAllUppercase(name);
+
+        //then
+        assertTrue(result);
+    }
 }
