@@ -1,11 +1,16 @@
 package pl.sdacademy.demo;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
 
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class GreetingsTest {
 
-    Greetings greetings = new Greetings();
 
 
     @Test
@@ -14,10 +19,10 @@ public class GreetingsTest {
         String name = "Adam";
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("Witaj, Adam", result);
+        assertEquals("Witaj, Adam", result);
     }
 
     @Test
@@ -26,10 +31,10 @@ public class GreetingsTest {
         String name = null;
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("Witaj, mój przyjacielu", result);
+        assertEquals("Witaj, mój przyjacielu", result);
     }
 
     @Test
@@ -38,10 +43,10 @@ public class GreetingsTest {
         String name = "ADAM";
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("WITAJ ADAM!", result);
+        assertEquals("WITAJ ADAM!", result);
     }
 
     @Test
@@ -50,10 +55,10 @@ public class GreetingsTest {
         String name = "Adam,Iza";
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("Adam i Iza, witajcie!", result);
+        assertEquals("Adam i Iza, witajcie!", result);
     }
 
     @Test
@@ -62,22 +67,44 @@ public class GreetingsTest {
         String name = "Adam,Iza,Robert";
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("Adam, Iza i Robert, witajcie!", result);
+        assertEquals("Adam, Iza i Robert, witajcie!", result);
     }
 
     @Test
-    public void shouldReturnCapitalizeMessageWithNameWhenNameIsCapitalize() {
+    public void shouldReturnCapitalizeMessageWithNameWhenFirstNameIsCapitalize() {
+        //given
+        String name = "ADAM, Iza, Robert";
+
+        //when
+        String result = new Greetings(name).helloMsg();
+
+        //then
+        assertEquals("Iza i Robert, witajcie! WITAJ ADAM", result);
+    }
+    @Test
+    public void shouldReturnCapitalizeMessageWithNameWhenSecondNameIsCapitalize() {
+        //given
+        String name = "Adam, IZA, Robert";
+
+        //when
+        String result = new Greetings(name).helloMsg();
+
+        //then
+        assertEquals("Adam i Robert, witajcie! WITAJ IZA", result);
+    }
+    @Test
+    public void shouldReturnCapitalizeMessageWithNameWhenThirdNameIsCapitalize() {
         //given
         String name = "Adam, Iza, ROBERT";
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("Adam i Iza, witajcie! WITAJ ROBERT", result);
+        assertEquals("Adam i Iza, witajcie! WITAJ ROBERT", result);
     }
 
     @Test
@@ -86,10 +113,10 @@ public class GreetingsTest {
         String name = "Adam3";
 
         //when
-        String result = greetings.hello(name);
+        String result = new Greetings(name).helloMsg();
 
         //then
-        Assertions.assertEquals("Z liczbami się nie witam.", result);
+        assertEquals("Z liczbami się nie witam.", result);
     }
 
 

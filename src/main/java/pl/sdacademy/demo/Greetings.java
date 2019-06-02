@@ -1,27 +1,52 @@
 package pl.sdacademy.demo;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Greetings {
-    public String hello(String name) {
-        if (name == null) {
+    private String name;
+
+    public Greetings(String name) {
+        this.name = name;
+    }
+
+
+    public String helloMsg() {
+        NameValidator validator = new NameValidator(name);
+        if (validator.isNull()) {
             return "Witaj, mój przyjacielu";
         }
-        if (name.matches(".*\\d.*")) {
+        if (validator.isNumberContained()) {
             return "Z liczbami się nie witam.";
         }
-        name = name.replace(" ", "");
-        String capitalizeName = name.toUpperCase();
-        if (name.equals(capitalizeName)) {
-            return "WITAJ " + capitalizeName + "!";
+        if (validator.isUppercased()) {
+            return "WITAJ " + name.toUpperCase() + "!";
         }
-        if (name.contains(",")) {
+        if (validator.hasMoreThanOneNames()) {
             String[] split = name.split(",");
+
             if (split.length == 2) {
-                return split[0] + " i " + split[1] + ", witajcie!";
+                return split[0].trim() + " i " + split[1].trim() + ", witajcie!";
             }
             if (split.length == 3) {
-                String capitalizeSplit = split[2].toUpperCase();
-                if (split[2].equals(capitalizeSplit)) {
-                    return split[0] + " i " + split[1] + ", witajcie! WITAJ " + capitalizeSplit;
+                int tempNum = 0;
+                String temp = null;
+                String[] tempArray = new String[3];
+                for (int i = 0; i < split.length; i++) {
+                    split[i] = split[i].trim();
+                    if (split[i].equals(split[i].toUpperCase())) {
+                        temp = split[i].toUpperCase().trim();
+
+                    }else {
+                        tempArray[tempNum] = split[i];
+                        tempNum++;
+                    }
+                }
+
+
+                if (temp != null) {
+                    return tempArray[0] + " i " + tempArray[1] + ", witajcie! WITAJ " + temp;
                 }
                 return split[0] + ", " + split[1] + " i " + split[2] + ", witajcie!";
             }
