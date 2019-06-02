@@ -58,11 +58,7 @@ public class GreetingsTest {
 
     @Test
     public void greetThreePersonsOneWithUpeerCase() {
-        /*
-        Wymaganie 6
-        Gdy jedno z trzech imion będzie napisane wielkimi literami, np.”Adam, Iza, ROBERT”, wtedy
-        metoda ma zwrócić „Adam i Iza, witajcie! WITAJ ROBERT!”.
-         */
+
         Greetings greetings = new Greetings();
 
         String input = "Adam, Iza, ROBERT";
