@@ -2,6 +2,10 @@ package pl.sdacademy.demo;
 
 public class Greetings {
 
+    public static void main(String[] args) {
+        System.out.println(greet("Adam1"));
+    }
+
     public static String greet(String name) {
 
         if (name == null) {
@@ -18,11 +22,11 @@ public class Greetings {
                 return names[0] + "," + names[1] + " i" + names[2] + " witajcie!";
             }
 
-        }else if(name.contains("1")){
+        }
+        if (name.matches(".*\\d.*")) {
             return "Z liczbami się nie witam.";
         }
         return "Witaj " + name;
 
     }
-
 }

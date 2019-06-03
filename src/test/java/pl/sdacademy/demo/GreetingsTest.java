@@ -1,17 +1,21 @@
 package pl.sdacademy.demo;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class GreetingsTest {
 
+    private Greetings greetings;
+
+    @Before
+    public void setUp() {
+        greetings = new Greetings();
+    }
+
     @Test
     public void greet() {
-
-        //given
-        Greetings greetings = new Greetings();
-
 
         //when
         String name = "Adam";
@@ -23,9 +27,6 @@ public class GreetingsTest {
 
     @Test
     public void greetNull() {
-        //given
-        Greetings greetings = new Greetings();
-
         //when
         String name = null;
 
@@ -36,8 +37,6 @@ public class GreetingsTest {
 
     @Test
     public void greetToUpperCase() {
-        //given
-        Greetings greetings = new Greetings();
 
         //when
         String name = "ADAM";
@@ -50,9 +49,6 @@ public class GreetingsTest {
 
     @Test
     public void greetTestWhenTwoNamesGiven() {
-        //given
-        Greetings greetings = new Greetings();
-
         //when
         String name = "Adam, Iza";
 
@@ -64,9 +60,6 @@ public class GreetingsTest {
 
     @Test
     public void greetTestWithThreeNames() {
-        //given
-        Greetings greetings = new Greetings();
-
         //when
         String name = "Adam, Iza, Robert";
 
@@ -78,9 +71,6 @@ public class GreetingsTest {
 
     @Test
     public void greetTestWithOneNameToUpperCase() {
-        //given
-        Greetings greetings = new Greetings();
-
         //when
         String name = "Adam, Iza, ROBERT";
 
@@ -92,9 +82,6 @@ public class GreetingsTest {
 
     @Test
     public void greetTestIfThereIsNumber() {
-        //given
-        Greetings greetings = new Greetings();
-
         //when
         String name = "Ada1m1";
 
