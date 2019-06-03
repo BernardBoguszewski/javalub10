@@ -1,6 +1,6 @@
 package pl.sdacademy.FizzBuzz;
 
-public class FizzBuzzWizz {
+public class FizzBuzzWhizz {
 
     public static void main(String[] args) {
         System.out.println(fizzBuzzWhizz(0));
